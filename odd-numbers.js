@@ -1,25 +1,48 @@
-/*
-// solution 1
-for (var i = 1; i <= 99; i++) {
-  if (i % 2 === 1) console.log(i);
-}
+/* 
+input: positive integer
+output: logs all the odd numbers
+  - from 1 to argument (inclusive)
 
-// another solution
-var i;
-for (i = 1; i < 100; i += 2) {
-  console.log(i);
-}
+rules
+  - odd numbers: n % 2 === 1 or n % 2 !== 0
+  - log all numbers on separate lines
+  - inclusive
+
+data structure
+  - integers
+
+algorithm
+  - loop through each number from 1 until
+    argument
+  - use if conditional
+    - log if odd
+  - implicitly return undefined
 */
 
-// another solution / further exploration
-function isOdd(number) {
-  return number % 2 === 1;
-}
-
-function logOddNumbers(limit) {
-  for (var i = 1; i <= limit; i++) {
-    if (isOdd(i)) console.log(i);
+function logOddNumbers(positiveInt) {
+  var isOdd;
+  for (var i = 1; i <= positiveInt; i++) {
+    isOdd = i % 2 !== 0;
+    if (isOdd) console.log(i);
   }
 }
 
-logOddNumbers(200);
+// further exploration 1
+function logOddNumbers(positiveInt) {
+  for (var i = 1; i <= positiveInt; i += 2) {
+    console.log(i);
+  }
+}
+
+// further exploration 2
+function logOddNumbers(positiveInt) {
+  var isEven;
+  for (var i = 1; i <= positiveInt; i++) {
+    isEven = i % 2 === 0;
+    if (isEven) continue;
+    console.log(i);
+  }
+}
+
+// example
+logOddNumbers(19);

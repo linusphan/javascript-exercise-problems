@@ -1,37 +1,62 @@
-function isMultiple(number, factor) {
-  return number % factor === 0;
-}
+/*
+input: none
+output: multiples of 3 or 5 of numbers from 1 to 100 (inclusive)
 
-function multisum(number) {
-  var numbers = [];
-  for (var i = 1; i <= number; i++) {
-    if (isMultiple(i, 3) || isMultiple(i, 5)) numbers.push(i);
+rules:
+  - multiples of 3: num % 3 === 0
+  - multiples of 5: num % 5 === 0
+  - multiples of both:
+    num % 3 === 0 && num % 5 === 0
+    append an "!" to the number (string)
+
+data structures
+  - number
+  - string
+  
+algorithm
+  - loop through numbers from 1 to 100 (inclusive) using for loop
+  - use branching logic (switch statement)
+*/
+
+function multiplesOfThreeAndFive() {
+  for (var i = 3; i <= 100; i++) {
+    switch (true) {
+      case (i % 3 === 0 && i % 5 === 0):
+        console.log(String(i) + '!');
+        break;
+      case i % 3 === 0:
+      case i % 5 === 0:
+        console.log(String(i));
+        break;
+    }
   }
-
-  return numbers.reduce(function(sum, el) {
-    return sum + el;
-  }, 0);
 }
 
 // another solution
-function isMultiple(number, divisor) {
-  return number % divisor === 0;
-}
-
-function multisum(maxValue) {
-  var sum = 0;
-  var i;
-
-  for (i = 1; i <= maxValue; i += 1) {
-    if (isMultiple(i, 3) || isMultiple(i, 5)) {
-      sum += i;
+function multiplesOfThreeAndFive() {
+  for (var i = 3; i <= 100; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      console.log(String(i) + '!');
+    } else if (i % 3 === 0 || i % 5 === 0) {
+      console.log(String(i));
     }
   }
-
-  return sum;
 }
 
-console.log(multisum(3) === 3);
-console.log(multisum(5) === 8);
-console.log(multisum(10) === 33);
-console.log(multisum(1000) === 234168);
+/*
+further exploration
+startNum could be called min
+endNum could be called max
+*/
+function multiplesOfThreeAndFive(startNum = 3, endNum = 100) {
+  for (var i = startNum; i <= endNum; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      console.log(String(i) + '!');
+    } else if (i % 3 === 0 || i % 5 === 0) {
+      console.log(String(i));
+    }
+  }
+}
+
+// multiplesOfThreeAndFive();
+multiplesOfThreeAndFive(1, 15);
